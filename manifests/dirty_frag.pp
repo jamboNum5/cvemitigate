@@ -24,6 +24,7 @@ class cvemitigate::dirty_frag {
       ensure => absent,
       path   => '/etc/modprobe.d/dirtyfrag.conf',
       notify => Exec['fix_dirty_frag_cache'],
+      path   => '/etc/modprobe.d/dirtyfrag.conf',
     }
   }
 
