@@ -1,6 +1,4 @@
-# @summary A short summary of the purpose of this class
-#
-# A description of what this class does
+# @summary This puppet config is to patch copy/fail
 #
 # @example
 #   include cvemitigate::cve_2026_31431
@@ -36,11 +34,23 @@ class cvemitigate::cve_2026_31431 {
     }
   }
 
+  # Allow config to be removed
   if ( $cvemitigate::fix_cve_2026_31431 == true ) {
     file { 'modprobe-disable-algif-conf' :
       path    => '/etc/modprobe.d/disable-algif.conf',
       content => 'install algif_aead /bin/false',
       notify  => Exec['update_initramfs'],
+    }
+  }
+  # Now proper fix has been released, need the ability to roll this back.
+  if ( $cvemitigate::fix_cve_2026_31431 == false ) {
+    file { 'rm-modprobe-disable-algif-conf' :
+      ensure => absent,
+      path   => '/etc/modprobe.d/disable-algif.conf',
+    }
+    file { 'rm-modprobe-disable-algif-aead-conf' :
+      ensure => absent,
+      path   => '/etc/modprobe.d/disable-algif_aead.conf',
     }
   }
 }

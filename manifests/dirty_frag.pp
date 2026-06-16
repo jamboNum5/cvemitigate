@@ -1,6 +1,4 @@
-# @summary A short summary of the purpose of this class
-#
-# A description of what this class does
+# @summary Module to patch dirtyfrag vulnerability.
 #
 # @example
 #   include cvemitigate::dirty_frag
@@ -24,22 +22,6 @@ class cvemitigate::dirty_frag {
       ensure => absent,
       path   => '/etc/modprobe.d/dirtyfrag.conf',
       notify => Exec['fix_dirty_frag_cache'],
-      path   => '/etc/modprobe.d/dirtyfrag.conf',
     }
   }
-
-  # Check for loaded kernel modules
-  #$kernel_modules = $facts['loaded_kernel_modules']
-#
-  #$modules_to_check = [
-  #  'esp4',
-  #  'esp6',
-  #  'rxrpc',
-  #  'xt_limit',
-  #]
-
-  # Create a hash for loaded modules found in fact
-  #$loaded_modules = {}
-  ##$modules_to_check.each |String $mod| {
-  #['one','two','three'].each |Integer $index, String $krnmod| { notice ("${index} = ${krnmod}") }
 }
