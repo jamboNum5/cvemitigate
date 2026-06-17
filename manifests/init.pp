@@ -1,11 +1,15 @@
-# @summary A short summary of the purpose of this class
+# @summary Main class, includes all other classes.
 #
-# A description of what this class does
+# @see https://gitlab.lboro.ac.uk/MUS/lu
 #
+# Initialise module, bring in manifests, to test and fix issues.
 # @example
 #   include cvemitigate
-# @params $cvemitigate::test_cve_2026_31431
+# @param test_cve_2026_31431
 #   Toggle switch to test test_cve_2026_31431
+# @param fix_cve_2026_31431
+#   Toggle switch to test test_cve_2026_31431
+
 class cvemitigate (
   Boolean   $test_cve_2026_31431 = $cvemitigate::params::test_cve_2026_31431,
   Boolean   $fix_cve_2026_31431 = $cvemitigate::params::fix_cve_2026_31431,
@@ -14,8 +18,8 @@ class cvemitigate (
 ) inherits cvemitigate::params {
 # Include Fixes
 # enabling/disabling is controlled with Puppet variables
-  include dirty_frag
-  include cve_2026_31431
+  include cvemitigate::dirty_frag
+  include cvemitigate::cve_2026_31431
 
 # Reusable Commands
   exec { 'update_initramfs':
