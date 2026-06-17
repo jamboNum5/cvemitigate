@@ -47,10 +47,12 @@ class cvemitigate::cve_2026_31431 {
     file { 'rm-modprobe-disable-algif-conf' :
       ensure => absent,
       path   => '/etc/modprobe.d/disable-algif.conf',
+      notify => Exec['update_initramfs'],
     }
     file { 'rm-modprobe-disable-algif-aead-conf' :
       ensure => absent,
       path   => '/etc/modprobe.d/disable-algif_aead.conf',
+      notify => Exec['update_initramfs'],
     }
   }
 }

@@ -12,6 +12,11 @@ class cvemitigate (
   Boolean   $test_dirty_frag = $cvemitigate::params::test_dirty_frag,
   Boolean   $fix_dirty_frag = $cvemitigate::params::fix_dirty_frag,
 ) inherits cvemitigate::params {
+# Include Fixes
+# enabling/disabling is controlled with Puppet variables
+  include dirty_frag
+  include cve_2026_31431
+
 # Reusable Commands
   exec { 'update_initramfs':
     command     => '/usr/sbin/update-initramfs -u -k all',

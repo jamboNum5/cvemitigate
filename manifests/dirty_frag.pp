@@ -8,7 +8,7 @@ class cvemitigate::dirty_frag {
     refreshonly => true,
     path        => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
   }
-  # fix_dirty_frag
+  # Enable Fix
   if ( $cvemitigate::fix_dirty_frag == true ) {
     file { 'fix_dirty_frag' :
       ensure  => file,
@@ -17,11 +17,12 @@ class cvemitigate::dirty_frag {
       notify  => Exec['fix_dirty_frag_cache','update_initramfs'],
     }
   }
+  # Disable Fix
   if ( $cvemitigate::fix_dirty_frag == false ) {
     file { 'fix_dirty_frag' :
       ensure => absent,
       path   => '/etc/modprobe.d/dirtyfrag.conf',
-      notify => Exec['fix_dirty_frag_cache'],
+      notify => Exec['fix_dirty_frag_cache','update_initramfs'],
     }
   }
 }
