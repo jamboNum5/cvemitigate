@@ -13,7 +13,7 @@ class cvemitigate::cow {
       ensure  => file,
       path    => '/etc/modprobe.d/pedit-cow.conf',
       content => "# Fix Copy-on-Write Issue \ninstall act_pedit /bin/false",
-      notify  => Exec['fix_dirty_frag_cache','update_initramfs'],
+      notify  => Exec['update_initramfs'],
     }
   }
   # Disable Fix
