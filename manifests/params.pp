@@ -5,9 +5,12 @@
 # @example
 #   include cvemitigate::params
 class cvemitigate::params {
-  $test_cve_2026_31431 = false
-  $fix_cve_2026_31431 = true
+  $test_cve_2026_31431  = false
+  $fix_cve_2026_31431   = true
 
-  $test_dirty_frag = false
-  $fix_dirty_frag = false
+  $test_dirty_frag  = false
+  $fix_dirty_frag   = false
+
+  $fix_cow      = false
+  $test_cow     = false
 }
