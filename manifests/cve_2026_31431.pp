@@ -42,6 +42,7 @@ class cvemitigate::cve_2026_31431 {
       notify  => Exec['update_initramfs'],
     }
   }
+
   # Now proper fix has been released, need the ability to roll this back.
   if ( $cvemitigate::fix_cve_2026_31431 == false ) {
     file { 'rm-modprobe-disable-algif-conf' :
