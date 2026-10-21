@@ -5,8 +5,9 @@
 # @example
 #   include cvemitigate::emudhra
 class cvemitigate::emudhra {
+  include apt
   package { 'ca-certificates':
     ensure   => latest,
-    requires => Exe[apt_update],
+    requires => Exec[apt_update],
   }
 }
