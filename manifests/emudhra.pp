@@ -5,7 +5,9 @@
 # @example
 #   include cvemitigate::emudhra
 class cvemitigate::emudhra {
-  if ($facts['ca_certificates'] != '20260816ubuntu0.22.04.1') {
+  $ca_fixed = "20260816ubuntu0.${facts['os']['release']['major']}.1"
+
+  if ($facts['ca_certificates'] != $ca_fixed) {
     notify { 'widtdt':
       name     => $facts['ca_certificates'],
       loglevel => 'err',
