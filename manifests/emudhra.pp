@@ -7,7 +7,7 @@
 class cvemitigate::emudhra {
   include apt
   package { 'ca-certificates':
-    ensure   => latest,
-    requires => Exec[apt_update],
+    ensure  => latest,
+    require => Exec['apt_update'],
   }
 }
