@@ -5,9 +5,10 @@
 # @example
 #   include cvemitigate::emudhra
 class cvemitigate::emudhra {
-  include apt
-  package { 'ca-certificates':
-    ensure  => latest,
-    require => Exec['apt_update'],
+  if ($facts['ca_certificates'] != '20260816ubuntu0.22.04.1') {
+    notify { 'widtdt':
+      name     => $facts['ca_certificates'],
+      loglevel => 'err',
+    }
   }
 }
