@@ -12,5 +12,8 @@ class cvemitigate::emudhra {
       name     => $facts['ca_certificates'],
       loglevel => 'err',
     }
+    exec { 'ca-apt-update' :
+      command => '/usr/bin/apt update',
+    }
   }
 }
