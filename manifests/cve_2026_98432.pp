@@ -7,7 +7,8 @@
 #   include cvemitigate::cve_2026_98432
 class cvemitigate::cve_2026_98432 {
   exec { 'fix_cve_2026_98432' :
-    command => '/usr/bin/pro fix CVE-2026-98432 && sudo touch /opt/lboro/CVE-2026-98432',
+    command => 'pro fix CVE-2026-98432 && sudo touch /opt/lboro/CVE-2026-98432',
     unless  => 'test -f /opt/lboro/CVE-2026-98432',
+    path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
   }
 }
